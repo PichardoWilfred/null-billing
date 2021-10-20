@@ -22,26 +22,48 @@
 
     <div class="container">
         <!-- 
+       0-  Clasificación (COTIZACIÓN -- FACTURA) > select
        1-  Representante
        2-  Nombre de la Empresa
        3-  Subtítulo de la Empresa
-       4-  Clasificación (COTIZACIÓN -- FACTURA) > select
-       5-  Desarrollador > select
-       6-  Puesto de Desarrollador > select
-       7-  Fecha > auto 
+       4-  Desarrollador > select
+       6-  Fecha > auto 
         -->
         <form class="client-info" autocomplete="off" id="form">
-            <div class="select-group">
-                <select name="select" placeholder="values" class="select-type">
-                    <option value="value1">
-                        Value 1
-                    </option>
-                    <option value="value2">
-                        Value 2
-                    </option>
-                </select>
+            <div class="select-section" id="type-bill">
+                <div class="select-group" id="select-group">
+                    <span>
+                        <p id="type-document">tipo</p>
+                        <img src="./img/icons/drop-down.svg" alt="icon" id="dropdown-icon" class="dropdown-icon">
+                    </span>
+                </div>
+                <div id="option-group" class="option-group invisible">
+                    <div class="option">
+                        <p>Cotización</p>
+                    </div>
+                    <div class="option">
+                        <p>Factura</p>
+                    </div>
+                </div>
             </div>
-            <input id="button" type="button" value="FACTURAR">
+
+            <div class="select-section" id="developer">
+                <div class="select-group" id="select-group">
+                    <span>
+                        <p id="type-document">Desarrollador</p>
+                        <img src="./img/icons/drop-down.svg" alt="icon" id="dropdown-icon" class="dropdown-icon  one">
+                    </span>
+                </div>
+                <div id="option-group" class="option-group invisible">
+                    <div class="option">
+                        <p>Wilfred Pichardo</p>
+                    </div>
+                    <div class="option">
+                        <p>Alfred Medina</p>
+                    </div>
+                </div>
+            </div>
+            <input id="bill-button" type="button" value="FACTURAR">
         </form>
     </div>
     <template id="input-group">
@@ -50,8 +72,7 @@
             <label></label>
         </div>
     </template>
-    <script src="main.js">
-    </script>
+    <script type="module" src="./js/main.js"></script>
 </body>
 
 </html>

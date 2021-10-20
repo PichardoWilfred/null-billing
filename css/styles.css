@@ -1,71 +1,71 @@
 /* fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;600;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;600;700;900&display=swap");
 @import "reset.css"; /* reset styles */
 @import "form/input.css"; /* Input */
 @import "form/select.css"; /* Select */
 
-body{
-    margin: 0;
-    height: 100vh;
+/* TODO */
+/* 1- adding a standard & responsive font-size */
+/* 2- adding a responsive div width */
+
+body {
+  margin: 0;
+  height: 100vh;
 }
 
 /* header */
-header{
-    display: flex;
-    padding: 15px;
+header {
+  display: flex;
+  padding: 15px;
 
-    color:white;
-    background-color: black;
+  color: white;
+  background-color: black;
 
-    border-bottom: 1px white solid;
-    height: 6%;
+  border-bottom: 1px white solid;
+  height: 6%;
 }
-.logo{
-    width: 40px;
-    margin: 0 25px 0 15px;
+.logo {
+  width: 40px;
+  margin: 0 25px 0 15px;
 }
 
-.def{
-    margin: auto auto auto 0;
-    align-content: center;
-
+.def {
+  margin: auto auto auto 0;
+  align-content: center;
 }
-.title{
-    margin: 0;
-    font-weight: 600;
-    font-size: clamp(23px,1.5em,70px);
+.title {
+  margin: 0;
+  font-weight: 600;
+  font-size: clamp(23px, 1.5em, 70px);
 }
-.desc{
-    margin: 0;
-    margin-top: 5px;
-    font-weight: 300;
-    font-size: 15px;
-      
+.desc {
+  margin: 0;
+  margin-top: 5px;
+  font-weight: 300;
+  font-size: 15px;
 }
 
 /* container */
-.container{
-    display: flex;
-    height: 90.6%;
+.container {
+  display: flex;
+  height: 90.6%;
 
+  background-color: black;
+  color: white;
 
-    background-color: black;
-    color:white;
-
-    justify-content: center;
-    align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
-form{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-    
-    border-radius: 10px;
-    padding: 40px;
-    
-    width: 40%;
-    
-    border: 3px solid white;
+  border-radius: 10px;
+  padding: 40px;
+
+  width: 40%;
+
+  border: 3px solid white;
 }
