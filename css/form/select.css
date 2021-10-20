@@ -1,0 +1,65 @@
+.select-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  background-color: black;
+  height: 45px;
+
+  margin: 20px 0 40px 0;
+}
+
+/* For the arrow to appear the parent must be relative and the child absolute */
+
+/* .select-group:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+} */
+
+select {
+  
+  font-size: 20px;
+  font-weight: 700;
+
+ 
+
+  color: white;
+  background-color: transparent;
+
+  border: 3px solid white;
+  border-radius: 7px;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;  
+}
+
+
+
+select:focus {
+  outline: 0;
+}
+
+.select-group::after{
+  display:block;
+}
+
+
+
+.option-type {
+  width: 100%;
+  color: white;
+  background-color: black;
+  font-size: 20px;
+
+}
+
+select, option{
+  padding: 15px;
+}
