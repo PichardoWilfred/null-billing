@@ -1,0 +1,83 @@
+.service-group {
+  display: flex;
+  flex-direction: column;
+
+  height: 3rem;
+  margin: 10px;
+
+  background-color: black;
+  margin-top: 35px;
+}
+
+.price-group {
+  display: flex;
+  justify-content: end;
+  border-bottom: 3px solid white;
+  margin-bottom: 5px;
+  vertical-align: bottom;
+}
+
+.price-group > p {
+  line-height: 25px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.price-group > input,
+.name-group > input {
+  background-color: transparent;
+  color: white;
+
+  outline: none;
+  border: 0;
+
+  font-weight: 300;
+  font-size: 18px;
+}
+
+.price-group > input {
+  text-align: right;
+  margin-left: 5px;
+  width: 17%;
+}
+.name-group > input {
+  width: 80%;
+  margin-top: 2px;
+}
+.name-group > input::placeholder {
+  font-weight: 600;
+}
+
+.name-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete-service {
+  background-color: white;
+  color: black;
+
+  padding: 3px;
+  font-size: 50px;
+  font-weight: 600;
+
+  width: 25px;
+  text-align: center;
+
+  border-radius: 50%;
+  padding: 0;
+}
+
+.delete-service:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.877);
+  transition: all 200ms ease-in-out;
+}
+
+.black-square {
+  margin: auto;
+  margin-top: 11px;
+  background-color: black;
+  width: 60%;
+  height: 4px;
+}

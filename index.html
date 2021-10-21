@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="css/styles.css">
-    <title>beta-billing</title>
+    <title>core-billing</title>
 
 </head>
 
@@ -15,20 +15,12 @@
     <header>
         <img src="/img/logo.svg" alt="null-logo" class="logo">
         <div class="def">
-            <h1 class="title">Null biling</h1>
-            <p class="desc">Fill the inputs down below within the client data.</p>
+            <h1 class="title">Null bill</h1>
+            <p class="desc">Fill the data fields down below.</p>
         </div>
     </header>
 
     <div class="container">
-        <!-- 
-       0-  Clasificación (COTIZACIÓN -- FACTURA) > select
-       1-  Representante
-       2-  Nombre de la Empresa
-       3-  Subtítulo de la Empresa
-       4-  Desarrollador > select
-       6-  Fecha > auto 
-        -->
         <form class="client-info" autocomplete="off" id="form">
             <div class="select-section" id="type-bill">
                 <div class="select-group" id="select-group">
@@ -46,7 +38,7 @@
                     </div>
                 </div>
             </div>
-
+            <!-- Here goes the client-data inputs -->
             <div class="select-section" id="developer">
                 <div class="select-group" id="select-group">
                     <span>
@@ -63,7 +55,32 @@
                     </div>
                 </div>
             </div>
-            <input id="bill-button" type="button" value="FACTURAR">
+            <hr>
+            <!-- Here goes the services -->
+            <div class="services" id="services">
+                <!-- first example-->
+                <div id="service-group" class="service-group">
+                    <div id="price-group" class="price-group">
+                        <p id="currency" class="currency">$RD</p> <!-- dir="rtl" -->
+                        <input type="text" name="price" id="price" placeholder="1,000.00">
+                    </div>
+                    <div id="name-group" class="name-group">
+                        <input type="text" name="name" id="name" placeholder="Nombre del Servicio">
+                        <div class="delete-service" id="delete-service">
+                            <div class="black-square"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- first example-->
+                <div class="add-service">
+                    <div class="add-button">
+                        <p class="add-cross">+</p>
+                    </div>
+                </div>
+            </div>
+
+            <input id="bill-button" type="button" value="FACTURAR" disabled="disabled">
         </form>
     </div>
     <template id="input-group">

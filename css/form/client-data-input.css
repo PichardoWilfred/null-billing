@@ -18,13 +18,13 @@ label {
   transition: all 0.3s;
 }
 
-input:valid ~ label,
-input:focus ~ label {
+.input-group > input:valid ~ label,
+.input-group > input:focus ~ label {
   top: -50px;
   font-size: 13px;
 }
 
-input {
+.input-group > input {
   font-size: 20px;
   font-weight: 300;
 
@@ -39,6 +39,9 @@ input {
   padding: 6px;
 }
 
+input:active {
+  outline: none;
+}
 input:focus {
   outline: none;
 }

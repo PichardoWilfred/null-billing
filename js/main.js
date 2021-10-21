@@ -1,4 +1,5 @@
-import * as forms from "./forms.js";
+import { renderDataInputs } from "./forms/input.js";
+import { renderSelectOptions } from "./forms/select.js";
 
 //inputs description
 const inputData = [
@@ -7,8 +8,20 @@ const inputData = [
   { placeholder: "Subtítulo de la Empresa", name: "subtitle" },
 ];
 
-forms.renderInputs(document.getElementById("developer"), inputData);
+//render client-data related inputs
+renderDataInputs(document.getElementById("developer"), inputData);
 
-//type-options
-forms.renderSelectOptions("type-bill");
-forms.renderSelectOptions("developer");
+//render the options of the select inputs
+renderSelectOptions("type-bill");
+renderSelectOptions("developer");
+
+let price = document.getElementById("price");
+price.addEventListener(
+  "keyup", //when you finish typing
+  () => {
+    if (Number(price.value) == 0) price.value = 0;
+    let n = parseInt(price.value.replace(/\D/g, ""), 10); //regular expressions go brrrr
+    price.value = n.toLocaleString();
+  },
+  false
+);
