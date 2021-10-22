@@ -56,24 +56,9 @@
                 </div>
             </div>
             <hr>
-            <!-- Here goes the services -->
             <div class="services" id="services">
-                <!-- first example-->
-                <div id="service-group" class="service-group">
-                    <div id="price-group" class="price-group">
-                        <p id="currency" class="currency">$RD</p> <!-- dir="rtl" -->
-                        <input type="text" name="price" id="price" placeholder="1,000.00">
-                    </div>
-                    <div id="name-group" class="name-group">
-                        <input type="text" name="name" id="name" placeholder="Nombre del Servicio">
-                        <div class="delete-service" id="delete-service">
-                            <div class="black-square"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- first example-->
-                <div class="add-service">
+                <!-- here goes the services-->
+                <div class="add-service" id="add-services">
                     <div class="add-button">
                         <p class="add-cross">+</p>
                     </div>
@@ -89,6 +74,21 @@
             <label></label>
         </div>
     </template>
+    <template id="services-template">
+        <div id="service-group" class="service-group">
+            <div id="price-group" class="price-group">
+                <p id="currency" class="currency">$RD</p> <!-- dir="rtl" -->
+                <input type="text" name="price" id="price" placeholder="1,000.00">
+            </div>
+            <div id="name-group" class="name-group">
+                <input type="text" name="name" id="name" placeholder="Nombre del Servicio">
+                <div class="delete-service" id="delete-service">
+                    <div class="black-square"></div>
+                </div>
+            </div>
+        </div>
+    </template>
+
     <script type="module" src="./js/main.js"></script>
 </body>
 

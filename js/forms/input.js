@@ -19,5 +19,3 @@ export const renderDataInputs = (before, data) => {
 
   document.querySelector("#form").insertBefore(fragment, before); //adding said fragment
 };
-
-export const ServiceInputs = (data) => {};
