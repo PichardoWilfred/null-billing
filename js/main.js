@@ -16,9 +16,34 @@ renderDataInputs(document.getElementById("developer"), inputData);
 renderSelectOptions("type-bill");
 renderSelectOptions("developer");
 
-//button
+//working
 const button = document.getElementById("add-services");
+let n = 0;
 
-renderServices(3);
+const services_fragment = document.createDocumentFragment();
+const services_template = document.querySelector("#services-template").content;
 
-// formatCurrency();
+const services = services_template.querySelector(`#service-group`);
+
+services.setAttribute("id", `services-${n}`);
+
+let clone = services_template.cloneNode(true);
+services_fragment.appendChild(clone);
+
+document
+  .querySelector("#services")
+  .insertBefore(services_fragment, document.getElementById("add-services"));
+formatCurrency();
+
+button.addEventListener("click", () => {
+  n++;
+  services.setAttribute("id", `services-${n}`);
+
+  let clone = services_template.cloneNode(true);
+  services_fragment.appendChild(clone);
+
+  document
+    .querySelector("#services")
+    .insertBefore(services_fragment, document.getElementById("add-services"));
+  formatCurrency();
+});

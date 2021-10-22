@@ -14,23 +14,17 @@ export const formatCurrency = () => {
 };
 
 //moved to the main file
-const services_fragment = document.createDocumentFragment();
-const services_template = document.querySelector("#services-template").content;
 
-export const renderServices = (n) => {
-  //remove loop or document fragment
-  const services = services_template.querySelector(`#service-group`);
+export const renderServices = (n, fragment, template) => {
+  const services = template.querySelector(`#service-group`);
 
-  for (let index = 0; index < n; index++) {
-    services.setAttribute("id", `services-${index}`);
+  services.setAttribute("id", `services-${n}`);
 
-    let clone = services_template.cloneNode(true);
-    services_fragment.appendChild(clone);
-  }
+  let clone = template.cloneNode(true);
+  fragment.appendChild(clone);
 
-  document
-    .querySelector("#services")
-    .insertBefore(services_fragment, document.getElementById("add-services"));
-
-  formatCurrency();
+  //   document
+  //     .querySelector("#services")
+  //     .insertBefore(fragment, document.getElementById("add-services"));
+  //   formatCurrency();
 };
