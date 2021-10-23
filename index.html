@@ -38,7 +38,9 @@
                     </div>
                 </div>
             </div>
-            <!-- Here goes the client-data inputs -->
+            <!-- Right here, the client data inputs will render. -->
+            <div id="text-input-container"></div>
+
             <div class="select-section" id="developer">
                 <div class="select-group" id="select-group">
                     <span>
@@ -56,8 +58,8 @@
                 </div>
             </div>
             <hr>
-            <div class="services" id="services">
-                <!-- here goes the services-->
+            <div class="services" id="service-input-container">
+                <!-- Right here, services will render.-->
                 <div class="add-service" id="add-services">
                     <div class="add-button">
                         <p class="add-cross">+</p>
@@ -68,7 +70,7 @@
             <input id="bill-button" type="button" value="FACTURAR" disabled="disabled">
         </form>
     </div>
-    <template id="input-group">
+    <template id="input-group-template">
         <div class="input-group">
             <input type="text">
             <label></label>
@@ -77,7 +79,7 @@
     <template id="services-template">
         <div id="service-group" class="service-group">
             <div id="price-group" class="price-group">
-                <p id="currency" class="currency">$RD</p> <!-- dir="rtl" -->
+                <p id="currency" class="currency">$RD</p>
                 <input type="text" name="price" id="price" placeholder="1,000.00">
             </div>
             <div id="name-group" class="name-group">

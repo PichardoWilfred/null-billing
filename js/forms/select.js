@@ -24,10 +24,15 @@ export const renderSelectOptions = (typeBill) => {
   const icon = father.querySelector("#dropdown-icon");
 
   selectGroup.addEventListener("click", () => {
-    if (!selectGroup.classList.contains("options-opened")) rotate(icon);
-    showMenu(selectGroup, optionsGroup); //toggling the menu display property
-    optionsGroup.style.width = selectGroup.clientWidth - 1 + "px"; //-- setting the width --
-    optionsGroup.style.marginTop = "-5px"; //-- setting the top distance --
+    if (!selectGroup.classList.contains("options-opened")) {
+      rotate(icon);
+      showMenu(selectGroup, optionsGroup); //toggling the menu visibility
+      optionsGroup.style.width = selectGroup.clientWidth - 1 + "px"; //-- setting the width --
+      optionsGroup.style.marginTop = "-5px"; //-- setting the top distance --
+    } else {
+      rotate(icon);
+      hideMenu(selectGroup, optionsGroup);
+    }
   });
 
   options.forEach((e) => {

@@ -6,15 +6,13 @@ const services = services_template.querySelector(`#service-group`);
 const deleteBtn = services.querySelector(`#delete-service`);
 
 const button = document.getElementById("add-services");
-
 let n_services = 0;
 
 const addCurrrencyAndDeleteBtn = (clone, n) => {
-  //Instead of adding this functionalities AFTER the render has been done we Should
-  //Add them in runtime somehow
   const price = clone.querySelector("#price");
   const deleteBtn = clone.querySelector(`#delete-service-${n}`);
-  const serviceN = clone.querySelector(`#services-${n}`);
+  const service = clone.querySelector(`#services-${n}`);
+
   //See how event Listeners actually storage in memory
   price.addEventListener(
     "keyup",
@@ -26,11 +24,22 @@ const addCurrrencyAndDeleteBtn = (clone, n) => {
     false
   );
 
-  deleteBtn.addEventListener("click", (e) => {
+  deleteBtn.addEventListener("click", () => {
     if (n === 0) {
       console.log("at least a service men");
     } else {
-      serviceN.remove();
+      service.animate(
+        [
+          { transform: "translateY(0)", opacity: "1" },
+          { transform: "translateY(-35px)", opacity: "0" },
+        ],
+        {
+          duration: 150,
+        }
+      );
+      setTimeout(() => {
+        service.remove();
+      }, 150);
     }
   });
 };
@@ -41,10 +50,23 @@ const newPriceInput = (n) => {
 
   let clone = services_template.cloneNode(true);
   addCurrrencyAndDeleteBtn(clone, n);
+
   services_fragment.appendChild(clone);
   document
-    .querySelector("#services")
+    .querySelector("#service-input-container")
     .insertBefore(services_fragment, document.getElementById("add-services"));
+
+  document.getElementById(`services-${n}`).animate(
+    [
+      // keyframes
+      { transform: "translateY(-35px)", opacity: "0" },
+      { transform: "translateY(0)", opacity: "1" },
+    ],
+    {
+      // timing options
+      duration: 150,
+    }
+  );
 };
 
 export const renderServices = () => {

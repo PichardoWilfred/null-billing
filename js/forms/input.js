@@ -1,5 +1,5 @@
-export const renderDataInputs = (before, data) => {
-  const template = document.querySelector("#input-group").content; //get the template
+export const renderTextInputs = (data) => {
+  const template = document.querySelector("#input-group-template").content; //get the template
   const fragment = document.createDocumentFragment(); //fragment to load
 
   data.forEach((element) => {
@@ -17,5 +17,5 @@ export const renderDataInputs = (before, data) => {
     fragment.appendChild(clone);
   });
 
-  document.querySelector("#form").insertBefore(fragment, before); //adding said fragment
+  document.querySelector("#text-input-container").appendChild(fragment); //adding said fragment
 };

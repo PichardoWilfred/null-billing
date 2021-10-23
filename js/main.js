@@ -1,4 +1,4 @@
-import { renderDataInputs } from "./forms/input.js";
+import { renderTextInputs } from "./forms/input.js";
 import { renderSelectOptions } from "./forms/select.js";
 import { renderServices } from "./forms/services.js"; //formatCurrency,
 
@@ -10,7 +10,7 @@ const inputData = [
 ];
 
 //render client-data related inputs
-renderDataInputs(document.getElementById("developer"), inputData);
+renderTextInputs(inputData);
 
 //render the options of the select inputs
 renderSelectOptions("type-bill");

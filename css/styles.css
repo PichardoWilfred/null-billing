@@ -1,9 +1,9 @@
 /* fonts */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;600;700;900&display=swap");
 @import "reset.css"; /* reset styles */
-@import "form/client-data-input.css"; /* Client data input */
-@import "form/service-input.css"; /* Client data input */
-@import "form/select.css"; /* Select */
+@import "form/text-input.css"; /* Client-Data input */
+@import "form/service-input.css"; /* Services inputs */
+@import "form/select-input.css"; /* Select */
 
 /* TODO */
 /* 1- adding a standard & responsive font-size */
@@ -12,6 +12,7 @@
 body {
   margin: 0;
   height: 100vh;
+  background-color: black;
 }
 
 /* header */
@@ -22,12 +23,17 @@ header {
   color: white;
   background-color: black;
 
-  border-bottom: 1px white solid;
+  border-bottom: 3px white solid;
   height: 6%;
 }
 .logo {
   width: 40px;
+  min-width: 40px;
+
+  min-height: 40px;
+
   margin: 0 25px 0 15px;
+  vertical-align: middle;
 }
 
 .def {
@@ -49,14 +55,15 @@ header {
 /* container */
 .container {
   display: flex;
+  justify-content: center;
 
   background-color: black;
   color: white;
 
-  justify-content: center;
-  align-items: center;
-
   width: 100%;
+
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 form {
@@ -71,8 +78,25 @@ form {
 
   border: 3px solid white;
 
-  margin-top: 30px;
-  margin-bottom: 30px;
+  transition: height 0.15s;
+}
+
+@media (max-width: 800px) {
+  form {
+    border: 0;
+    width: 75%;
+  }
+  .container {
+    width: 100vw;
+  }
+}
+
+@media (max-width: 500px) {
+  form {
+    border: 0;
+    width: 100%;
+    padding: 20px;
+  }
 }
 
 input::-webkit-outer-spin-button,

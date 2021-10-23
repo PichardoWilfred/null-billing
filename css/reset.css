@@ -128,4 +128,5 @@ option,
 input,
 body {
   font-family: "Montserrat";
+  font-size: clamp(12px, 0.3rem, 40px);
 }

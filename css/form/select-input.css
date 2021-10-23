@@ -55,14 +55,20 @@ span {
 
 .options-opened {
   border-radius: 7px 7px 0 0 !important;
+
   border-top: 4px solid white;
   border-left: 4px solid white;
   border-right: 4px solid white;
-  border-bottom: 4px solid black;
 }
 .invisible {
-  display: none !important;
+  z-index: -2;
+  transform: scaleY(0%);
+  transform-origin: 0 top;
   transition: all var(--option-menu-timelapse) ease-in-out;
+}
+
+.invisible > .option {
+  opacity: 0;
 }
 
 /* https://moderncss.dev/custom-select-styles-with-pure-css/ */
@@ -89,7 +95,10 @@ span {
 .option {
   padding: 15px;
   margin: 0;
-  width: auto;
+}
+
+.option > p {
+  font-size: clamp(20px, 0.9rem, 30px);
 }
 
 /* divider */
