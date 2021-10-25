@@ -1,25 +1,32 @@
-//moved to the main file
 const services_fragment = document.createDocumentFragment();
 const services_template = document.querySelector("#services-template").content;
-
+//
 const services = services_template.querySelector(`#service-group`);
 const deleteBtn = services.querySelector(`#delete-service`);
 
 const button = document.getElementById("add-services");
+const total = document.getElementById("total");
+
+let allPriceServices = {};
+let totalPrice = 0;
 let n_services = 0;
 
+function formatCurrency(value) {
+  let newValue = value;
+  if (Number(newValue) == 0) newValue = 0;
+  let n = parseInt(newValue.replace(/\D/g, ""), 10);
+  newValue = n.toLocaleString();
+  return newValue;
+}
 const addCurrrencyAndDeleteBtn = (clone, n) => {
   const price = clone.querySelector("#price");
   const deleteBtn = clone.querySelector(`#delete-service-${n}`);
   const service = clone.querySelector(`#services-${n}`);
-
-  //See how event Listeners actually storage in memory
+  //See how event listeners actually storage in memory
   price.addEventListener(
     "keyup",
     () => {
-      if (Number(price.value) == 0) price.value = 0;
-      let n = parseInt(price.value.replace(/\D/g, ""), 10); //regular expressions go brrrr
-      price.value = n.toLocaleString();
+      price.value = formatCurrency(price.value);
     },
     false
   );
@@ -34,15 +41,55 @@ const addCurrrencyAndDeleteBtn = (clone, n) => {
           { transform: "translateY(-35px)", opacity: "0" },
         ],
         {
-          duration: 150,
+          duration: 160,
         }
       );
       setTimeout(() => {
         service.remove();
+        checkPrices(document);
       }, 150);
     }
   });
 };
+
+function updatePrice(services) {
+  services.forEach((element) => {
+    const price = parseInt(element.value.replace(",", ""));
+    const service = element.parentNode.parentNode.getAttribute("id");
+
+    allPriceServices[service] = price;
+    totalPrice = 0;
+    for (let name in allPriceServices) {
+      totalPrice += allPriceServices[name];
+    }
+    if (totalPrice > 0) total.textContent = formatCurrency(String(totalPrice));
+  });
+}
+
+function checkPrices(document) {
+  //if it doesnt work over here, prompt them elsewhere
+  const container = document.querySelector("#service-input-container");
+  const services = container.querySelectorAll("#price");
+  allPriceServices = {};
+
+  updatePrice(services);
+
+  services.forEach((element) => {
+    element.addEventListener("blur", () => {
+      const price = parseInt(element.value.replace(",", ""));
+      const service = element.parentNode.parentNode.getAttribute("id");
+
+      allPriceServices[service] = price;
+      totalPrice = 0;
+      for (let name in allPriceServices) {
+        totalPrice += allPriceServices[name];
+      }
+
+      if (totalPrice > 0)
+        total.textContent = formatCurrency(String(totalPrice));
+    });
+  });
+}
 
 const newPriceInput = (n) => {
   services.setAttribute("id", `services-${n}`);
@@ -55,25 +102,15 @@ const newPriceInput = (n) => {
   document
     .querySelector("#service-input-container")
     .insertBefore(services_fragment, document.getElementById("add-services"));
-
-  document.getElementById(`services-${n}`).animate(
-    [
-      // keyframes
-      { transform: "translateY(-35px)", opacity: "0" },
-      { transform: "translateY(0)", opacity: "1" },
-    ],
-    {
-      // timing options
-      duration: 150,
-    }
-  );
 };
 
 export const renderServices = () => {
   newPriceInput(n_services); //render our first service
+  checkPrices(document);
 
   button.addEventListener("click", () => {
     n_services++;
     newPriceInput(n_services); // replace for the one that only upddates the fragment
+    checkPrices(document);
   });
 };
