@@ -38,7 +38,6 @@ export function sendFormData() {
     company: company,
     subtitle: subtitle,
     services: serviceData,
-    total: total,
   };
   //validating inputs
   for (const element in formData) {
@@ -68,7 +67,6 @@ export function sendFormData() {
   //adding
   formData["typeDocument"] = typeDocument === "TIPO" ? undefined : typeDocument;
   formData["developer"] = developer === "DESARROLLADOR" ? undefined : developer;
-
   //validating selects
   if (formData["typeDocument"] === undefined) {
     HighlightSelect("type-document");
@@ -79,7 +77,9 @@ export function sendFormData() {
     validForm = false;
   }
 
-  if (validForm) printBill(formData);
-
-  console.log(formData);
+  if (validForm) {
+    return formData;
+  } else {
+    return null;
+  }
 }
