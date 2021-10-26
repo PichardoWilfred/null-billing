@@ -16,6 +16,5 @@ export const renderTextInputs = (data) => {
     let clone = template.cloneNode(true);
     fragment.appendChild(clone);
   });
-
-  document.querySelector("#text-input-container").appendChild(fragment); //adding said fragment
+  document.querySelector("#text-input-container").appendChild(fragment); //apending all the inputs
 };

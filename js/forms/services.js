@@ -7,7 +7,7 @@ const deleteBtn = services.querySelector(`#delete-service`);
 const button = document.getElementById("add-services");
 const total = document.getElementById("total");
 
-let allPriceServices = {};
+let servicePrices = {};
 let totalPrice = 0;
 let n_services = 0;
 
@@ -46,43 +46,44 @@ const addCurrrencyAndDeleteBtn = (clone, n) => {
       );
       setTimeout(() => {
         service.remove();
-        checkPrices(document);
+        updatePrices(document);
       }, 150);
     }
   });
 };
 
-function updatePrice(services) {
+function updateAmount(services) {
   services.forEach((element) => {
     const price = parseInt(element.value.replace(",", ""));
     const service = element.parentNode.parentNode.getAttribute("id");
 
-    allPriceServices[service] = price;
+    servicePrices[service] = price;
     totalPrice = 0;
-    for (let name in allPriceServices) {
-      totalPrice += allPriceServices[name];
+    for (let name in servicePrices) {
+      totalPrice += servicePrices[name];
     }
     if (totalPrice > 0) total.textContent = formatCurrency(String(totalPrice));
   });
 }
 
-function checkPrices(document) {
+function updatePrices(document) {
   //if it doesnt work over here, prompt them elsewhere
   const container = document.querySelector("#service-input-container");
   const services = container.querySelectorAll("#price");
-  allPriceServices = {};
+  servicePrices = {};
 
-  updatePrice(services);
+  updateAmount(services); //Updates the totalPrice
 
+  //Makes the blur-event on said prices, to update the totalPrice.
   services.forEach((element) => {
     element.addEventListener("blur", () => {
-      const price = parseInt(element.value.replace(",", ""));
-      const service = element.parentNode.parentNode.getAttribute("id");
+      const price = parseInt(element.value.replace(",", "")); // converts them to integer
+      const service = element.parentNode.parentNode.getAttribute("id"); //get's its service name
 
-      allPriceServices[service] = price;
-      totalPrice = 0;
-      for (let name in allPriceServices) {
-        totalPrice += allPriceServices[name];
+      servicePrices[service] = price; //updates itself each time we add/delete one
+      totalPrice = 0; //re-initializes the total-amount.
+      for (let name in servicePrices) {
+        totalPrice += servicePrices[name];
       }
 
       if (totalPrice > 0)
@@ -92,6 +93,7 @@ function checkPrices(document) {
 }
 
 const newPriceInput = (n) => {
+  //getting a new instance of the template
   services.setAttribute("id", `services-${n}`);
   deleteBtn.setAttribute("id", `delete-service-${n}`);
 
@@ -102,15 +104,13 @@ const newPriceInput = (n) => {
   document
     .querySelector("#service-input-container")
     .insertBefore(services_fragment, document.getElementById("add-services"));
+  updatePrices(document);
 };
 
 export const renderServices = () => {
   newPriceInput(n_services); //render our first service
-  checkPrices(document);
-
   button.addEventListener("click", () => {
     n_services++;
     newPriceInput(n_services); // replace for the one that only upddates the fragment
-    checkPrices(document);
   });
 };

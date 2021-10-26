@@ -14,12 +14,12 @@ let rotate = (icon) => {
   icon.classList.toggle("upside-down");
 };
 
-export const renderSelectOptions = (typeBill) => {
+export const renderSelectOptions = (typeBill, selectID) => {
   const father = document.getElementById(typeBill);
   const selectGroup = father.querySelector("#select-group");
   const optionsGroup = father.querySelector("#option-group");
 
-  const typeDocument = father.querySelector("#type-document");
+  const typeDocument = father.querySelector(`#${selectID}`);
   const options = father.querySelectorAll(".option");
   const icon = father.querySelector("#dropdown-icon");
 

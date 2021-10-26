@@ -1,6 +1,7 @@
 import { renderTextInputs } from "./forms/input.js";
 import { renderSelectOptions } from "./forms/select.js";
-import { renderServices } from "./forms/services.js"; //formatCurrency,
+import { renderServices } from "./forms/services.js";
+import { loadData } from "./forms/data-handling.js";
 
 //inputs description
 const inputData = [
@@ -13,7 +14,10 @@ const inputData = [
 renderTextInputs(inputData);
 
 //render the options of the select inputs
-renderSelectOptions("type-bill");
-renderSelectOptions("developer");
+renderSelectOptions("type-bill", "type-document");
+renderSelectOptions("developer", "type-developer");
 
 renderServices();
+
+//adding the event listener to the button
+document.getElementById("bill-button").addEventListener("click", loadData);
