@@ -1,7 +1,7 @@
 import { renderTextInputs } from "./forms/input.js";
 import { renderSelectOptions } from "./forms/select.js";
 import { renderServices } from "./forms/services.js";
-import { loadData } from "./forms/data-handling.js";
+import { sendFormData } from "./forms/data-handling.js";
 
 //inputs description
 const inputData = [
@@ -20,4 +20,4 @@ renderSelectOptions("developer", "type-developer");
 renderServices();
 
 //adding the event listener to the button
-document.getElementById("bill-button").addEventListener("click", loadData);
+document.getElementById("bill-button").addEventListener("click", sendFormData);

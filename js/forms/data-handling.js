@@ -3,9 +3,13 @@ import {
   HighlightService,
   HighlightSelect,
 } from "./error-handling.js";
+import { printBill } from "../pdf-handling/pdf-handler.js";
+
 let validForm = false;
 
-export function loadData() {
+export function sendFormData() {
+  const total = document.getElementById("total").innerText || undefined;
+
   const client = document.querySelector("#client").value || undefined;
   const company = document.querySelector("#company").value || undefined;
   const subtitle = document.querySelector("#subtitle").value || undefined;
@@ -34,6 +38,7 @@ export function loadData() {
     company: company,
     subtitle: subtitle,
     services: serviceData,
+    total: total,
   };
   //validating inputs
   for (const element in formData) {
@@ -63,6 +68,7 @@ export function loadData() {
   //adding
   formData["typeDocument"] = typeDocument === "TIPO" ? undefined : typeDocument;
   formData["developer"] = developer === "DESARROLLADOR" ? undefined : developer;
+
   //validating selects
   if (formData["typeDocument"] === undefined) {
     HighlightSelect("type-document");
@@ -73,10 +79,7 @@ export function loadData() {
     validForm = false;
   }
 
-  if (validForm) {
-    console.log(formData);
-    return formData;
-  } else {
-    return null;
-  }
+  if (validForm) printBill(formData);
+
+  console.log(formData);
 }

@@ -9,7 +9,7 @@ const total = document.getElementById("total");
 
 let servicePrices = {};
 let totalPrice = 0;
-let n_services = 0;
+let id_service = 0;
 
 function formatCurrency(value) {
   let newValue = value;
@@ -107,10 +107,21 @@ const newPriceInput = (n) => {
   updatePrices(document);
 };
 
+export const serviceQuantity = () => {
+  const father = document.getElementById("service-input-container");
+  const children = father.querySelectorAll(".service-group");
+  return children.length;
+};
+
 export const renderServices = () => {
-  newPriceInput(n_services); //render our first service
+  newPriceInput(id_service); //render our first service
   button.addEventListener("click", () => {
-    n_services++;
-    newPriceInput(n_services); // replace for the one that only upddates the fragment
+    // replace for the one that only upddates the fragment
+    if (serviceQuantity() <= 5) {
+      id_service++; //for now, is only possible to have 6 services inside the bill.
+      newPriceInput(id_service);
+    } else {
+      console.log("service limit exceeded");
+    }
   });
 };

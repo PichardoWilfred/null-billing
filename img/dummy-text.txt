@@ -1,0 +1,8 @@
+Gabriel Pichardo
+Null Systems
+Code them
+
+Base de Datos ---> 1500
+Autenticación ---> 2500
+Interfaz ----> 5000
+API ------> 2500
