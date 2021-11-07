@@ -60,8 +60,7 @@ export async function printInvoice({
   };
 
   // Fetch custom font
-  const pdf_url =
-    "http://127.0.0.1:9222/js/pdf-handling/template/templateform.pdf";
+  const pdf_url = "./js/pdf-handling/template/templateform.pdf";
   const existingPdfBytes = await fetch(pdf_url).then((res) =>
     res.arrayBuffer()
   );
@@ -73,7 +72,7 @@ export async function printInvoice({
 
   // Embed our custom font in the document
   for (let property in fonts) {
-    const url = `http://127.0.0.1:9222/js/pdf-handling/fonts/${fonts[property]}`;
+    const url = `./js/pdf-handling/fonts/${fonts[property]}`;
     const fontBytes = await fetch(url).then((res) => res.arrayBuffer());
     //Once we load the font, we re-assign them to its correspondant property.
     fonts[property] = await pdfDoc.embedFont(fontBytes);
