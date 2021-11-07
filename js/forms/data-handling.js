@@ -2,8 +2,9 @@ import {
   HighlightInput,
   HighlightService,
   HighlightSelect,
-} from "./error-handling.js";
-import { printBill } from "../pdf-handling/pdf-handler.js";
+  HighlightForm,
+} from "./form-animations.js";
+import { printInvoice } from "../pdf-handling/pdf-handler.js";
 
 let validForm = false;
 
@@ -33,13 +34,16 @@ export function sendFormData() {
     });
   }
 
+  //only adding said value, key name will be added automatically.
   const formData = {
-    client: client,
-    company: company,
-    subtitle: subtitle,
+    total,
+    client,
+    company,
+    subtitle,
     services: serviceData,
   };
   //validating inputs
+  console.log(formData);
   for (const element in formData) {
     if (formData[element] === undefined) {
       let DOMReference = document
@@ -47,19 +51,22 @@ export function sendFormData() {
         .getAttribute("id");
       HighlightInput(DOMReference);
       validForm = false;
+
       //
     } else if (formData[element] instanceof Object) {
       //when we reach the last object
       formData[element].forEach((service) => {
-        for (let element in service) {
+        for (let e in service) {
           //if a property of said object returns undefined grab said reference and color its first children
-          if (service[element] == undefined) {
+          if (service[e] === undefined) {
+            // console.log(e + " from " + { ...service } + " is invalid");
             HighlightService(service.name);
             validForm = false;
           }
         }
       });
     } else {
+      // console.log(element + " is Valid");
       validForm = true;
     }
   }
@@ -78,7 +85,8 @@ export function sendFormData() {
   }
 
   if (validForm) {
-    return formData;
+    printInvoice(formData);
+    HighlightForm();
   } else {
     return null;
   }

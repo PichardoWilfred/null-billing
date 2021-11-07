@@ -52,6 +52,27 @@ const addCurrrencyAndDeleteBtn = (clone, n) => {
   });
 };
 
+{
+  /* <div class="services-total" id="services-total">
+<span class="total-group" id="total-group">
+    &#x24;RD
+    <p id="total">0</p>
+</span>
+</div> */
+}
+export const replacePrice = (amount) => {
+  const amount_frag = document.createDocumentFragment();
+  const span = document.getElementById("total-group"); // the element we will replace
+  const old_p = span.querySelector("p");
+  //
+  const p = document.createElement("p"); // only need to replace the p element
+  p.setAttribute("id", "total");
+  p.innerText = amount;
+  //
+  amount_frag.appendChild(p);
+  span.replaceChild(amount_frag, old_p);
+};
+
 function updateAmount(services) {
   services.forEach((element) => {
     const price = parseInt(element.value.replace(",", ""));
@@ -62,7 +83,7 @@ function updateAmount(services) {
     for (let name in servicePrices) {
       totalPrice += servicePrices[name];
     }
-    if (totalPrice > 0) total.textContent = formatCurrency(String(totalPrice));
+    if (totalPrice > 0) replacePrice(formatCurrency(String(totalPrice)));
   });
 }
 
@@ -86,8 +107,7 @@ function updatePrices(document) {
         totalPrice += servicePrices[name];
       }
 
-      if (totalPrice > 0)
-        total.textContent = formatCurrency(String(totalPrice));
+      if (totalPrice > 0) replacePrice(formatCurrency(String(totalPrice)));
     });
   });
 }
@@ -110,7 +130,7 @@ const newPriceInput = (n) => {
 export const serviceQuantity = () => {
   const father = document.getElementById("service-input-container");
   const children = father.querySelectorAll(".service-group");
-  return children.length;
+  return children.length + 1;
 };
 
 export const renderServices = () => {

@@ -1,6 +1,6 @@
 const { PDFDocument, rgb } = PDFLib;
 
-export async function printBill({
+export async function printInvoice({
   client,
   company,
   subtitle,
