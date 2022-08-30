@@ -1,12 +1,14 @@
 //show the options div
-let showMenu = (selectGroup, optionsGroup) => {
+let showMenu = (selectGroup, optionsGroup, icon) => {
   optionsGroup.classList.remove("invisible");
   selectGroup.classList.add("options-opened");
+  rotate(icon);
 };
 
-let hideMenu = (selectGroup, optionsGroup) => {
+let hideMenu = (selectGroup, optionsGroup, icon) => {
   optionsGroup.classList.add("invisible");
   selectGroup.classList.remove("options-opened");
+  rotate(icon);
 };
 
 //rotate the drop-down icon
@@ -25,20 +27,15 @@ export const renderSelectOptions = (typeBill, selectID) => {
 
   selectGroup.addEventListener("click", () => {
     if (!selectGroup.classList.contains("options-opened")) {
-      rotate(icon);
-      showMenu(selectGroup, optionsGroup); //toggling the menu visibility
-      optionsGroup.style.width = selectGroup.clientWidth - 1 + "px"; //-- setting the width --
-      optionsGroup.style.marginTop = "-5px"; //-- setting the top distance --
+      showMenu(selectGroup, optionsGroup, icon); //toggling the menu visibility
     } else {
-      rotate(icon);
-      hideMenu(selectGroup, optionsGroup);
+      hideMenu(selectGroup, optionsGroup, icon);
     }
   });
 
   options.forEach((e) => {
     e.addEventListener("click", () => {
-      hideMenu(selectGroup, optionsGroup); //closing the menu
-      rotate(icon); //rotating option
+      hideMenu(selectGroup, optionsGroup, icon); //closing the menu
       typeDocument.textContent = e.textContent; //we change the text value
     });
   });

@@ -3,7 +3,7 @@
   flex-direction: column;
   margin: 35px 0 35px 0;
 
-  width: 97%;
+  /* width: 97%; */
   height: 45px;
 
   background-color: black;
@@ -12,7 +12,7 @@
 label {
   position: relative;
   top: -30px;
-  margin-left: 6px;
+  /* margin-left: 6px; */
   font-weight: 700;
   font-size: 20px;
   transition: all 0.3s;
@@ -28,8 +28,6 @@ label {
   font-size: 20px;
   font-weight: 300;
 
-  width: 100%;
-
   background-color: transparent;
   color: white;
 
@@ -37,6 +35,7 @@ label {
   border-bottom: 3px solid white;
 
   padding: 6px;
+  padding-left: 0;
 }
 
 input:active {

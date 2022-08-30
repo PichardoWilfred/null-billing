@@ -30,11 +30,8 @@ header {
 
 .logo {
   width: 40px;
-  min-width: 40px;
 
-  min-height: 40px;
-
-  margin: 0 25px 0 15px;
+  margin-right: 25px;
   vertical-align: middle;
 }
 
@@ -47,7 +44,6 @@ header {
 .total-group {
   font-size: clamp(20px, 2rem, 20px);
   font-weight: bold;
-  /* width: 10%; */
 }
 
 .total-group > p {
@@ -85,8 +81,7 @@ header {
 
   width: 100%;
 
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-block: 30px;
 }
 
 form {
@@ -97,7 +92,9 @@ form {
   border-radius: 10px;
   padding: 40px;
 
-  width: 40%;
+  width: 50%;
+  min-width: 8rem;
+  max-width: 600px;
 
   border: 3px solid white;
 }
@@ -107,20 +104,28 @@ form {
     border: 0;
     width: 75%;
   }
+  .select-group p,
+  .input-group label {
+    font-size: 18px;
+  }
 
-  .container {
-    width: 100vw;
+  input#bill-button {
+    font-size: 18px;
+  }
+
+  .logo {
+    width: 40px;
   }
 }
 
 @media (max-width: 500px) {
   form {
     border: 0;
-    width: 100%;
-    padding: 20px;
+    width: 92%;
+    padding: 0px;
   }
   .def {
-    width: 30%;
+    display: none;
   }
 
   h1.title {
@@ -178,4 +183,10 @@ hr {
 
 .add-button > p {
   font-size: 60px;
+}
+input#bill-button {
+  transition: all 0.15s ease-in-out;
+}
+input#bill-button:hover {
+  background-color: rgb(216, 216, 216);
 }

@@ -2,7 +2,7 @@ import {
   HighlightInput,
   HighlightService,
   HighlightSelect,
-  HighlightForm,
+  highlightForm,
 } from "./form-animations.js";
 import { printInvoice } from "../pdf-handling/pdf-handler.js";
 
@@ -51,8 +51,6 @@ export function sendFormData() {
         .getAttribute("id");
       HighlightInput(DOMReference);
       validForm = false;
-
-      //
     } else if (formData[element] instanceof Object) {
       //when we reach the last object
       formData[element].forEach((service) => {
@@ -86,7 +84,7 @@ export function sendFormData() {
 
   if (validForm) {
     printInvoice(formData);
-    HighlightForm();
+    highlightForm();
   } else {
     return null;
   }

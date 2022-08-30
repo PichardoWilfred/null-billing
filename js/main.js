@@ -3,9 +3,6 @@ import { renderSelectOptions } from "./forms/select.js";
 import { renderServices } from "./forms/services.js";
 import { sendFormData } from "./forms/data-handling.js";
 
-// //test
-// import { HighlightForm } from "./forms/form-animations.js";
-
 //inputs description
 const inputData = [
   { placeholder: "Representante", name: "client" },

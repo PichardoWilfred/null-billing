@@ -1,12 +1,7 @@
 export function HighlightInput(id) {
   const input = document.getElementById(id);
   input.animate(
-    [
-      {
-        borderBottomColor: "#F44336",
-      },
-      { borderBottomColor: "white" },
-    ],
+    [{ borderBottomColor: "#F44336" }, { borderBottomColor: "white" }],
     { duration: 1500 }
   );
 }
@@ -26,33 +21,22 @@ export function HighlightSelect(element) {
   });
 }
 
-export const HighlightForm = () => {
+export const highlightForm = () => {
   const selects = document.querySelectorAll("#select-group");
+  const staticInputs = document
+    .getElementById("text-input-container")
+    .querySelectorAll("input");
+  const services = document.querySelectorAll("#price-group");
+
   for (const select of selects) {
     select.animate([{ borderColor: "#0DFF89" }, { borderColor: "white" }], {
       duration: 3000,
     });
   }
-  //
-  const staticInputs = document
-    .getElementById("text-input-container")
-    .querySelectorAll("input");
-  for (let input of staticInputs) {
-    input.animate(
+  for (const field of [...staticInputs, ...services]) {
+    field.animate(
       [{ borderBottomColor: "#0DFF89" }, { borderBottomColor: "white" }],
-      {
-        duration: 3000,
-      }
-    );
-  }
-  //
-  const services = document.querySelectorAll("#price-group");
-  for (let service of services) {
-    service.animate(
-      [{ borderBottomColor: "#0DFF89" }, { borderBottomColor: "white" }],
-      {
-        duration: 3000,
-      }
+      { duration: 3000 }
     );
   }
 };

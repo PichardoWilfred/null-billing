@@ -28,7 +28,7 @@
         </div>
     </header>
 
-    <div class="container">
+    <main class="container">
         <form class="client-info" autocomplete="off" id="form">
             <div class="select-section" id="type-bill">
                 <div class="select-group" id="select-group">
@@ -78,29 +78,29 @@
             <input id="bill-button" type="button" value="FACTURAR">
             <!-- <input id="test-button" type="button" value="Successfull animation"> -->
         </form>
-    </div>
-    <template id="input-group-template">
-        <div class="input-group">
-            <input type="text">
-            <label></label>
         </div>
-    </template>
-    <template id="services-template">
-        <div id="service-group" class="service-group">
-            <div id="price-group" class="price-group">
-                <p id="currency" class="currency">&#x24;RD</p>
-                <input type="text" name="price" id="price" placeholder="1,000.00">
+        <template id="input-group-template">
+            <div class="input-group">
+                <input type="text">
+                <label></label>
             </div>
-            <div id="name-group" class="name-group">
-                <input type="text" name="name" id="name" placeholder="Nombre del Servicio">
-                <div class="delete-service" id="delete-service">
-                    <div class="black-square"></div>
+        </template>
+        <template id="services-template">
+            <div id="service-group" class="service-group">
+                <div id="price-group" class="price-group">
+                    <p id="currency" class="currency">&#x24;RD</p>
+                    <input type="text" name="price" id="price" placeholder="1,000.00">
+                </div>
+                <div id="name-group" class="name-group">
+                    <input type="text" name="name" id="name" placeholder="Nombre del Servicio">
+                    <div class="delete-service" id="delete-service">
+                        <div class="black-square"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </template>
+        </template>
 
-    <script type="module" src="./js/main.js"></script>
+        <script type="module" src="./js/main.js"></script>
 </body>
 
 </html>
